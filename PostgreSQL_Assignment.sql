@@ -99,3 +99,45 @@ SELECT * FROM species;
 -- | common_name      |
 -- |------------------|
 -- | Asiatic Elephant |
+
+
+-- Problem 6️⃣ Show the most recent 2 sightings.
+SELECT  species.common_name,sightings.sighting_time, rangers.name FROM sightings
+    JOIN species ON sightings.species_id = species.species_id
+    JOIN rangers ON sightings.ranger_id = rangers.ranger_id
+    ORDER BY sightings.sighting_time DESC
+    LIMIT 2
+;
+
+SELECT * FROM sightings;
+
+-- | common_name   | sighting_time        | name        |
+-- |---------------|----------------------|-------------|
+-- | Snow Leopard  | 2024-05-18 18:30:00  | Bob White   |
+-- | Red Panda     | 2024-05-15 09:10:00  | Carol King  |
+
+
+-- Problem 7️⃣ Update all species discovered before year 1800 to have status 'Historic'.
+SELECT 
+
+-- AffectedRows : 3
+-- (No output needed - this is an UPDATE operation)
+
+-- Problem 8️⃣ Label each sighting's time of day as 'Morning', 'Afternoon', or 'Evening'.
+-- • Morning: before 12 PM
+-- • Afternoon: 12 PM–5 PM
+-- • Evening: after 5 PM
+
+
+-- | sighting_id | time_of_day |
+-- |-------------|-------------|
+-- | 1           | Morning     |
+-- | 2           | Afternoon   |
+-- | 3           | Morning     |
+-- | 4           | Evening     |
+
+
+-- Problem 9️⃣ Delete rangers who have never sighted any species
+
+-- AffectedRows : 1
+-- (No output needed - this is a DELETE operation)
