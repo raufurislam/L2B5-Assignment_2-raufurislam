@@ -76,3 +76,26 @@ SELECT * FROM sightings;
 -- | Alice Green | 1               |
 -- | Bob White   | 2               |
 -- | Carol King  | 1               |
+
+
+-- Problem 5️⃣ List species that have never been sighted.
+
+SELECT species.common_name, count(sightings.sighting_id) AS total_sightings 
+    FROM species
+        LEFT JOIN sightings
+        ON species.species_id = sightings.species_id
+        GROUP BY species.common_name;
+
+SELECT common_name
+    FROM species
+        LEFT JOIN sightings
+        ON species.species_id = sightings.species_id
+        WHERE sightings.sighting_id is NULL;
+
+
+SELECT * FROM species;
+
+
+-- | common_name      |
+-- |------------------|
+-- | Asiatic Elephant |
