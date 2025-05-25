@@ -58,3 +58,21 @@ SELECT * FROM sightings;
 -- Problem 3️⃣ Find all sightings where the location includes "Pass".
 SELECT * FROM sightings 
     WHERE location ILIKE '%pass';
+
+
+-- Problem 4️⃣ List each ranger's name and their total number of sightings.
+SELECT rangers.name, count(sightings.sighting_id) as total_sightings FROM rangers
+    LEFT JOIN sightings
+    on rangers.ranger_id = sightings.ranger_id
+    GROUP BY rangers.name
+    ORDER BY rangers.name ASC;
+    
+
+SELECT * FROM rangers;
+SELECT * FROM sightings;
+
+-- | name        | total_sightings |
+-- |-------------|-----------------|
+-- | Alice Green | 1               |
+-- | Bob White   | 2               |
+-- | Carol King  | 1               |
