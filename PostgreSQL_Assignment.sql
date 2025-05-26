@@ -153,7 +153,10 @@ from sightings;
 
 -- Problem 9️⃣ Delete rangers who have never sighted any species
 
-
+DELETE FROM rangers
+    WHERE ranger_id NOT IN (
+    SELECT DISTINCT ranger_id FROM sightings
+);
 
 
 -- AffectedRows : 1
