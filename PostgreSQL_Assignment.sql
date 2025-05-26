@@ -134,6 +134,14 @@ UPDATE species
 -- • Afternoon: 12 PM–5 PM
 -- • Evening: after 5 PM
 
+select sighting_id, 
+CASE 
+    WHEN EXTRACT(HOUR FROM sighting_time) < 12 THEN 'Morning' 
+    WHEN EXTRACT(HOUR FROM sighting_time) BETWEEN 12 AND 17 THEN 'Afternoon' 
+    ELSE 'Evening'
+END 
+from sightings;
+
 
 -- | sighting_id | time_of_day |
 -- |-------------|-------------|
@@ -144,6 +152,9 @@ UPDATE species
 
 
 -- Problem 9️⃣ Delete rangers who have never sighted any species
+
+
+
 
 -- AffectedRows : 1
 -- (No output needed - this is a DELETE operation)
